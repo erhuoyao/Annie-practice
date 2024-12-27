@@ -90,16 +90,13 @@
     <div class="container">
         <h1 id="welcomeMessage"></h1>
         <h3>温馨提示</h3>
-        <p>作答到一半或开始作答任务的时候，如果有事离开，或者您感到劳累需要休息，可以进行短暂的休息或者离开，但是请勿关闭当前作答窗口，否则退出后之前的作答内容不会被保留。</p>
+        <p> 作答到一半或开始作答任务的时候，如果有事离开，或者您感到劳累需要休息，可以进行短暂的休息或者离开，但是请勿关闭当前作答窗口，否则退出后之前的作答内容不会被保留。</p>
         <div class="progress-bar">
             <div class="progress-bar-inner" id="progressBar">0%</div>
         </div>
         <img id="image" src="" alt="示例图片">
         <div class="section">
-            <form id="questionForm" action="/thanks.html" method="POST" data-netlify="true">
-                <input type="hidden" name="form-name" value="rating-form">
-                <input type="hidden" name="_redirect" value="/thanks.html">
-
+            <form id="questionForm">
                 <label>1. 您对该产品的美观程度打分 (1-5):【这个手表美不美】</label>
                 <div class="radio-group">
                     <label><input type="radio" name="question1" value="1" required> 1</label>
@@ -116,7 +113,7 @@
                     <label><input type="radio" name="question4" value="困难"> 困难</label>
                 </div>
 
-                <label>-----------------------------------------------------------------------------------------------------------------------------</label>
+                <label> -----------------------------------------------------------------------------------------------------------------------------</label>
                 <label>3. 您对该产品的喜爱程度打分 (1-5):【我喜不喜欢这个手表】</label>
                 <div class="radio-group">
                     <label><input type="radio" name="question2" value="1" required> 1</label>
@@ -134,6 +131,8 @@
                     <label><input type="radio" name="question3" value="4"> 4</label>
                     <label><input type="radio" name="question3" value="5"> 5</label>
                 </div>
+
+
 
                 <button type="submit">提交答案</button>
             </form>
