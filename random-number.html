@@ -63,11 +63,6 @@
         .section {
             margin: 30px 0;
         }
-        hr {
-            border: none;
-            border-top: 1px solid #ccc;
-            margin: 20px 0;
-        }
         .progress-bar {
             width: 100%;
             background-color: #f3f3f3;
@@ -88,15 +83,13 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="welcomeMessage"></h1>
-        <h3>温馨提示</h3>
-        <p>作答到一半或开始作答任务的时候，如果有事离开，或者您感到劳累需要休息，可以进行短暂的休息或者离开，但请勿关闭当前作答窗口。</p>
+        <h1 id="welcomeMessage">评分生成器</h1>
+        <p>请对图片和问题进行评价，您的答案将被提交。</p>
         <div class="progress-bar">
             <div class="progress-bar-inner" id="progressBar">0%</div>
         </div>
         <img id="image" src="" alt="示例图片">
         <div class="section">
-            <!-- Netlify 表单 -->
             <form name="feedbackForm" method="POST" data-netlify="true">
                 <input type="hidden" name="form-name" value="feedbackForm">
                 <label>1. 您对该产品的美观程度打分 (1-5):【这个手表美不美】</label>
@@ -107,14 +100,12 @@
                     <label><input type="radio" name="question1" value="4"> 4</label>
                     <label><input type="radio" name="question1" value="5"> 5</label>
                 </div>
-
-                <label>2. 您在评估该图片美观程度的难易程度如何:【判断美的时候难不难】</label>
+                <label>2. 您对该图片美观程度的难易程度如何:【判断美的时候难不难】</label>
                 <div class="radio-group">
                     <label><input type="radio" name="question4" value="容易" required> 容易</label>
                     <label><input type="radio" name="question4" value="中等"> 中等</label>
                     <label><input type="radio" name="question4" value="困难"> 困难</label>
                 </div>
-
                 <label>3. 您对该产品的喜爱程度打分 (1-5):【我喜不喜欢这个手表】</label>
                 <div class="radio-group">
                     <label><input type="radio" name="question2" value="1" required> 1</label>
@@ -123,7 +114,6 @@
                     <label><input type="radio" name="question2" value="4"> 4</label>
                     <label><input type="radio" name="question2" value="5"> 5</label>
                 </div>
-
                 <label>4. 您对为自己购买该产品的支付意愿程度打分 (1-5):【我愿不愿意花钱为我买它】</label>
                 <div class="radio-group">
                     <label><input type="radio" name="question3" value="1" required> 1</label>
@@ -135,7 +125,7 @@
                 <button type="submit">提交答案</button>
             </form>
         </div>
-        <button id="endButton" class="hidden">结束</button>
     </div>
 </body>
 </html>
+
