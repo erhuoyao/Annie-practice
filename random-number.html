@@ -90,13 +90,15 @@
     <div class="container">
         <h1 id="welcomeMessage"></h1>
         <h3>温馨提示</h3>
-        <p> 作答到一半或开始作答任务的时候，如果有事离开，或者您感到劳累需要休息，可以进行短暂的休息或者离开，但是请勿关闭当前作答窗口，否则退出后之前的作答内容不会被保留。</p>
+        <p>作答到一半或开始作答任务的时候，如果有事离开，或者您感到劳累需要休息，可以进行短暂的休息或者离开，但请勿关闭当前作答窗口。</p>
         <div class="progress-bar">
             <div class="progress-bar-inner" id="progressBar">0%</div>
         </div>
         <img id="image" src="" alt="示例图片">
         <div class="section">
-            <form id="questionForm">
+            <!-- Netlify 表单 -->
+            <form name="feedbackForm" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="feedbackForm">
                 <label>1. 您对该产品的美观程度打分 (1-5):【这个手表美不美】</label>
                 <div class="radio-group">
                     <label><input type="radio" name="question1" value="1" required> 1</label>
@@ -113,7 +115,6 @@
                     <label><input type="radio" name="question4" value="困难"> 困难</label>
                 </div>
 
-                <label> -----------------------------------------------------------------------------------------------------------------------------</label>
                 <label>3. 您对该产品的喜爱程度打分 (1-5):【我喜不喜欢这个手表】</label>
                 <div class="radio-group">
                     <label><input type="radio" name="question2" value="1" required> 1</label>
@@ -131,81 +132,10 @@
                     <label><input type="radio" name="question3" value="4"> 4</label>
                     <label><input type="radio" name="question3" value="5"> 5</label>
                 </div>
-
-
-
                 <button type="submit">提交答案</button>
             </form>
         </div>
         <button id="endButton" class="hidden">结束</button>
     </div>
-
-    <script>
-        let imagePaths = [];
-        let currentImageIndex = 0;
-        const totalImages = 150; // 总图片数
-        let userResponses = [];
-
-        document.addEventListener('DOMContentLoaded', () => {
-            fetch('image_split_1.json')
-                .then(response => response.json())
-                .then(data => {
-                    imagePaths = data;
-                    displayImage();
-                    updateProgressBar();
-                });
-
-            document.getElementById('questionForm').addEventListener('submit', handleFormSubmit);
-            document.getElementById('endButton').addEventListener('click', showResults);
-        });
-
-        function handleFormSubmit(event) {
-            event.preventDefault();
-
-            const response = {
-                image: imagePaths[currentImageIndex],
-                question1: document.querySelector('input[name="question1"]:checked').value,
-                question2: document.querySelector('input[name="question2"]:checked').value,
-                question3: document.querySelector('input[name="question3"]:checked').value,
-                question4: document.querySelector('input[name="question4"]:checked').value
-            };
-
-            userResponses.push(response);
-
-            currentImageIndex++;
-            if (currentImageIndex < imagePaths.length) {
-                displayImage();
-                resetForm();
-                updateProgressBar();
-            } else {
-                document.getElementById('questionForm').classList.add('hidden');
-                document.getElementById('endButton').classList.remove('hidden');
-                updateProgressBar();
-            }
-        }
-
-        function resetForm() {
-            document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
-        }
-
-        function displayImage() {
-            if (currentImageIndex < imagePaths.length) {
-                document.getElementById('image').src = imagePaths[currentImageIndex];
-            }
-        }
-
-        function updateProgressBar() {
-            const progress = Math.min((currentImageIndex / totalImages) * 100, 100);
-            const progressBar = document.getElementById('progressBar');
-            progressBar.style.width = progress + '%';
-            progressBar.textContent = `${currentImageIndex}/${totalImages}`;
-        }
-
-        function showResults() {
-            localStorage.setItem('userResponses', JSON.stringify(userResponses));
-            alert('数据已收集完成！即将跳转到结果页面。');
-            window.location.href = 'task_end.html';
-        }
-    </script>
 </body>
 </html>
