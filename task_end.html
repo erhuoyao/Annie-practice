@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>评估结果</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #FCDFBF;
+        }
+        .container {
+            margin: 20px auto;
+            width: 800px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>评估结果</h1>
+        <table id="resultsTable">
+            <thead>
+                <tr>
+                    <th>图片名称</th>
+                    <th>美观评分</th>
+                    <th>喜爱评分</th>
+                    <th>支付意愿评分</th>
+                    <th>评估难易程度</th>
+                    <th>用户名</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 数据行将由 JavaScript 动态生成 -->
+            </tbody>
+        </table>
+        <button id="downloadCsvButton">下载 CSV</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 模拟从 LocalStorage 获取数据
+            const tableData = JSON.parse(localStorage.getItem('userResponses')) || [
+                { image: '图片1', question1: 8, question2: 9, question3: 7, question4: 3 },
+                { image: '图片2', question1: 6, question2: 8, question3: 5, question4: 2 }
+            ];
+            const username = localStorage.getItem('username') || '匿名用户';
+
+            // 渲染表格内容
+            const resultsTableBody = document.getElementById('resultsTable').querySelector('tbody');
+
+            tableData.forEach((data) => {
+                const row = resultsTableBody.insertRow();
+                row.insertCell(0).innerText = data.image;
+                row.insertCell(1).innerText = data.question1;
+                row.insertCell(2).innerText = data.question2;
+                row.insertCell(3).innerText = data.question3;
+                row.insertCell(4).innerText = data.question4;
+                row.insertCell(5).innerText = username;
+            });
+
+            // 生成并下载 CSV 文件
+            document.getElementById('downloadCsvButton').addEventListener('click', function() {
+                const csvContent = tableData.map(data => [
+                    data.image,
+                    data.question1,
+                    data.question2,
+                    data.question3,
+                    data.question4,
+                    username
+                ].join(',')).join('\n');
+
+                const csvHeader = '图片名称,美观评分,喜爱评分,支付意愿评分,评估难易程度,用户名\n';
+                const csvFile = new Blob([csvHeader + csvContent], { type: 'text/csv' });
+                const downloadLink = document.createElement('a');
+                const sanitizedUsername = username.replace(/[^a-zA-Z0-9]/g, '_'); // 移除特殊字符
+                const fileName = `${sanitizedUsername || '匿名用户'}.csv`;
+
+                downloadLink.href = URL.createObjectURL(csvFile);
+                downloadLink.download = fileName;
+
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>输入用户名</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FADDBC;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #FFFFFF;
+            padding: 20px 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 1240px;
+            height: 400px;
+            margin-top: 20px;
+        }
+        .container h1 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: #333333;
+        }
+        .container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #555555;
+        }
+        .container input {
+            width: 200px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #CCCCCC;
+            border-radius: 4px;
+        }
+        .container button {
+            width: 100px;
+            padding: 10px;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            color: #FFFFFF;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+        .container p {
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.6;
+        }
+        #top-image {
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 添加图片 -->
+    <img src="INTRO.jpg" alt="顶部图片" id="top-image">
+    <div class="container">
+        <h1>非常感谢您参与本次实验</h1>
+        <form id="usernameForm">
+            <label for="username">请输入您用户名：</label>
+            <input type="text" id="username" required>
+            <button type="submit">进入</button>
+        </form>
+        <p>实验说明</p>
+        <p>我们是来自浙江大学用户体验与产品创新设计实验室的设计研究团队，非常感谢您能够参与本次实验。</p>
+        <p>注意事项：请仔细浏览每张图片，并根据主观感受为其打分，请确保您的评分是基于第一印象，不要过度纠结。</p>
+        <p>本次实验时间为：45分钟</p>
+        <p>如果您在任务中遇到任何技术问题或图片加载失败，请及时联系我们的技术团队</p>
+        <p>本次问卷仅为学习研究使用，不会泄露您的个人信息！</p>
+    </div>
+
+    <script>
+        document.getElementById('usernameForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            if (username) {
+                localStorage.setItem('username', username);
+                window.location.href = 'random-number.html';
+            } else {
+                alert('请输入用户名');
+            }
+        });
+    </script>
+</body>
+</html>
