@@ -8,23 +8,23 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 50px;
+            margin: 0;
+            padding: 0;
             background-color: #FCDFBF;
         }
         .container {
-            margin: 20px auto;
-            width: 80%;
-            max-width: 800px;
-            padding: 20px;
+            margin: 10px;
+            padding: 15px;
             background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         img {
-            width: 300px;
+            width: 100%;
+            max-width: 300px;
             height: auto;
             display: block;
-            margin: 20px auto;
+            margin: 10px auto;
         }
         .hidden {
             display: none;
@@ -33,35 +33,38 @@
             background-color: #4CAF50;
             border: none;
             color: white;
-            padding: 10px 20px;
+            padding: 10px 15px;
             font-size: 16px;
-            margin: 20px 2px;
+            margin: 15px 5px;
             cursor: pointer;
             border-radius: 5px;
+            width: 90%;
+            max-width: 300px;
         }
         button:hover {
             background-color: #45a049;
         }
         form {
-            text-align: center;
+            text-align: left;
+            padding: 0 5%;
         }
         label {
-            margin: 10px auto;
-            font-size: 18px;
+            margin: 10px 0;
+            font-size: 16px;
             display: block;
         }
         .radio-group {
             margin: 10px 0;
-            text-align: center;
+            text-align: left;
             display: flex;
-            justify-content: center;
-            gap: 4px;
+            justify-content: space-around;
+            flex-wrap: wrap;
         }
         .radio-group label {
-            display: inline-block;
+            font-size: 14px;
         }
         .section {
-            margin: 30px 0;
+            margin: 20px 0;
         }
         hr {
             border: none;
@@ -69,28 +72,30 @@
             margin: 20px 0;
         }
         .progress-bar {
-            width: 100%;
+            width: 90%;
+            max-width: 300px;
+            margin: 0 auto 20px;
             background-color: #f3f3f3;
             border-radius: 25px;
-            margin: 20px 0;
         }
         .progress-bar-inner {
-            height: 25px;
+            height: 20px;
             width: 0;
             background-color: #4CAF50;
             border-radius: 25px;
             text-align: center;
-            line-height: 25px;
+            line-height: 20px;
             color: white;
+            font-size: 12px;
             font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 id="welcomeMessage"></h1>
+        <h1 id="welcomeMessage">评分生成器</h1>
         <h3>温馨提示</h3>
-        <p> 作答到一半或开始作答任务的时候，如果有事离开，或者您感到劳累需要休息，可以进行短暂的休息或者离开，但是请勿关闭当前作答窗口，否则退出后之前的作答内容不会被保留。</p>
+        <p>作答到一半或开始作答任务的时候，如果有事离开，或者您感到劳累需要休息，可以进行短暂的休息或者离开，但是请勿关闭当前作答窗口，否则退出后之前的作答内容不会被保留。</p>
         <div class="progress-bar">
             <div class="progress-bar-inner" id="progressBar">0%</div>
         </div>
@@ -113,7 +118,8 @@
                     <label><input type="radio" name="question4" value="困难"> 困难</label>
                 </div>
 
-                <label> -----------------------------------------------------------------------------------------------------------------------------</label>
+                <hr>
+
                 <label>3. 您对该产品的喜爱程度打分 (1-5):【我喜不喜欢这个手表】</label>
                 <div class="radio-group">
                     <label><input type="radio" name="question2" value="1" required> 1</label>
@@ -131,8 +137,6 @@
                     <label><input type="radio" name="question3" value="4"> 4</label>
                     <label><input type="radio" name="question3" value="5"> 5</label>
                 </div>
-
-
 
                 <button type="submit">提交答案</button>
             </form>
