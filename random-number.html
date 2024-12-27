@@ -11,20 +11,21 @@
             margin: 0;
             padding: 0;
             background-color: #FCDFBF;
+            font-size: 14px; /* 全局字体缩小 */
         }
         .container {
-            margin: 10px;
-            padding: 15px;
+            margin: 5px;
+            padding: 10px;
             background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         img {
             width: 100%;
-            max-width: 300px;
+            max-width: 280px;
             height: auto;
             display: block;
-            margin: 10px auto;
+            margin: 5px auto; /* 缩小图片上方间距 */
         }
         .hidden {
             display: none;
@@ -33,13 +34,13 @@
             background-color: #4CAF50;
             border: none;
             color: white;
-            padding: 5px 15px;
-            font-size: 16px;
-            margin: 15px 5px;
+            padding: 5px 10px;
+            font-size: 14px; /* 缩小按钮文字 */
+            margin: 10px 0;
             cursor: pointer;
             border-radius: 5px;
             width: 90%;
-            max-width: 300px;
+            max-width: 280px;
         }
         button:hover {
             background-color: #45a049;
@@ -49,42 +50,42 @@
             padding: 0 5%;
         }
         label {
-            margin: 10px 0;
-            font-size: 16px;
+            margin: 5px 0; /* 缩小题目间距 */
+            font-size: 14px;
             display: block;
         }
         .radio-group {
-            margin: 10px 0;
+            margin: 5px 0; /* 缩小选项组间距 */
             text-align: left;
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
         }
         .radio-group label {
-            font-size: 14px;
+            font-size: 12px; /* 缩小选项文字 */
         }
         .section {
-            margin: 20px 0;
+            margin: 15px 0; /* 缩小分块间距 */
         }
         hr {
             border: none;
             border-top: 1px solid #ccc;
-            margin: 20px 0;
+            margin: 10px 0; /* 缩小分割线上下间距 */
         }
         .progress-bar {
             width: 90%;
-            max-width: 300px;
-            margin: 0 auto 20px;
+            max-width: 280px;
+            margin: 0 auto 10px;
             background-color: #f3f3f3;
             border-radius: 25px;
         }
         .progress-bar-inner {
-            height: 20px;
+            height: 18px; /* 缩小进度条高度 */
             width: 0;
             background-color: #4CAF50;
             border-radius: 25px;
             text-align: center;
-            line-height: 20px;
+            line-height: 18px;
             color: white;
             font-size: 12px;
             font-weight: bold;
@@ -93,9 +94,9 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="welcomeMessage">评分生成器</h1>
-        <h3>温馨提示</h3>
-        <p>作答到一半或开始作答任务的时候，如果有事离开，或者您感到劳累需要休息，可以进行短暂的休息或者离开，但是请勿关闭当前作答窗口，否则退出后之前的作答内容不会被保留。</p>
+        <h1 id="welcomeMessage" style="font-size: 18px;">评分生成器</h1>
+        <h3 style="font-size: 16px;">温馨提示</h3>
+        <p style="font-size: 12px;">作答到一半或开始作答任务的时候，如果有事离开，或者您感到劳累需要休息，可以进行短暂的休息或者离开，但是请勿关闭当前作答窗口，否则退出后之前的作答内容不会被保留。</p>
         <div class="progress-bar">
             <div class="progress-bar-inner" id="progressBar">0%</div>
         </div>
