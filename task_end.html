@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>评估结果</title>
+    <h1>必须下载csv文件！！！</h1>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -52,32 +53,6 @@
 <body>
     <div class="container">
         <h1>评估结果</h1>
-        
-        <!-- Netlify 表单 -->
-        <form name="feedback" method="POST" data-netlify="true">
-            <p>
-                <label>图片名称: <input type="text" name="image_name" required /></label>
-            </p>
-            <p>
-                <label>美观评分: <input type="number" name="aesthetic_score" min="1" max="10" required /></label>
-            </p>
-            <p>
-                <label>喜爱评分: <input type="number" name="like_score" min="1" max="10" required /></label>
-            </p>
-            <p>
-                <label>支付意愿评分: <input type="number" name="payment_score" min="1" max="10" required /></label>
-            </p>
-            <p>
-                <label>评估难易程度: <input type="number" name="difficulty_score" min="1" max="10" required /></label>
-            </p>
-            <p>
-                <label>用户名: <input type="text" name="username" required /></label>
-            </p>
-            <p>
-                <button type="submit">提交表单</button>
-            </p>
-        </form>
-
         <table id="resultsTable">
             <thead>
                 <tr>
@@ -146,3 +121,4 @@
     </script>
 </body>
 </html>
+
