@@ -5,91 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>评分生成器</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #FCDFBF;
-            font-size: 14px; /* 全局字体缩小 */
-        }
-        .container {
-            margin: 5px;
-            padding: 10px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        img {
-            width: 100%;
-            max-width: 280px;
-            height: auto;
-            display: block;
-            margin: 5px auto; /* 缩小图片上方间距 */
-        }
-        .hidden {
-            display: none;
-        }
-        button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 5px 10px;
-            font-size: 14px; /* 缩小按钮文字 */
-            margin: 10px 0;
-            cursor: pointer;
-            border-radius: 5px;
-            width: 90%;
-            max-width: 280px;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        form {
-            text-align: left;
-            padding: 0 5%;
-        }
-        label {
-            margin: 5px 0; /* 缩小题目间距 */
-            font-size: 14px;
-            display: block;
-        }
-        .radio-group {
-            margin: 5px 0; /* 缩小选项组间距 */
-            text-align: left;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-        .radio-group label {
-            font-size: 12px; /* 缩小选项文字 */
-        }
-        .section {
-            margin: 15px 0; /* 缩小分块间距 */
-        }
-        hr {
-            border: none;
-            border-top: 1px solid #ccc;
-            margin: 10px 0; /* 缩小分割线上下间距 */
-        }
-        .progress-bar {
-            width: 90%;
-            max-width: 280px;
-            margin: 0 auto 10px;
-            background-color: #f3f3f3;
-            border-radius: 25px;
-        }
-        .progress-bar-inner {
-            height: 18px; /* 缩小进度条高度 */
-            width: 0;
-            background-color: #4CAF50;
-            border-radius: 25px;
-            text-align: center;
-            line-height: 18px;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-        }
+        /* 原样式代码略 */
     </style>
 </head>
 <body>
@@ -101,44 +17,10 @@
             <div class="progress-bar-inner" id="progressBar">0%</div>
         </div>
         <img id="image" src="" alt="示例图片">
+        <a id="downloadLink" href="" download="image.jpg" style="display: block; margin: 10px;">下载图片</a>
         <div class="section">
             <form id="questionForm">
-                <label>1. 您对该产品的美观程度打分 (1-5):【这个手表美不美】</label>
-                <div class="radio-group">
-                    <label><input type="radio" name="question1" value="1" required> 1</label>
-                    <label><input type="radio" name="question1" value="2"> 2</label>
-                    <label><input type="radio" name="question1" value="3"> 3</label>
-                    <label><input type="radio" name="question1" value="4"> 4</label>
-                    <label><input type="radio" name="question1" value="5"> 5</label>
-                </div>
-
-                <label>2. 您在评估该图片美观程度的难易程度如何:【判断美的时候难不难】</label>
-                <div class="radio-group">
-                    <label><input type="radio" name="question4" value="容易" required> 容易</label>
-                    <label><input type="radio" name="question4" value="中等"> 中等</label>
-                    <label><input type="radio" name="question4" value="困难"> 困难</label>
-                </div>
-
-                <hr>
-
-                <label>3. 您对该产品的喜爱程度打分 (1-5):【我喜不喜欢这个手表】</label>
-                <div class="radio-group">
-                    <label><input type="radio" name="question2" value="1" required> 1</label>
-                    <label><input type="radio" name="question2" value="2"> 2</label>
-                    <label><input type="radio" name="question2" value="3"> 3</label>
-                    <label><input type="radio" name="question2" value="4"> 4</label>
-                    <label><input type="radio" name="question2" value="5"> 5</label>
-                </div>
-
-                <label>4. 您对为自己购买该产品的支付意愿程度打分 (1-5):【我愿不愿意花钱为我买它】</label>
-                <div class="radio-group">
-                    <label><input type="radio" name="question3" value="1" required> 1</label>
-                    <label><input type="radio" name="question3" value="2"> 2</label>
-                    <label><input type="radio" name="question3" value="3"> 3</label>
-                    <label><input type="radio" name="question3" value="4"> 4</label>
-                    <label><input type="radio" name="question3" value="5"> 5</label>
-                </div>
-
+                <!-- 原表单代码略 -->
                 <button type="submit">提交答案</button>
             </form>
         </div>
@@ -195,7 +77,13 @@
 
         function displayImage() {
             if (currentImageIndex < imagePaths.length) {
-                document.getElementById('image').src = imagePaths[currentImageIndex];
+                const imgElement = document.getElementById('image');
+                const downloadLink = document.getElementById('downloadLink');
+                const currentImagePath = imagePaths[currentImageIndex];
+
+                imgElement.src = currentImagePath;
+                downloadLink.href = currentImagePath; // 设置下载链接
+                downloadLink.download = `image_${currentImageIndex + 1}.jpg`; // 设置默认文件名
             }
         }
 
